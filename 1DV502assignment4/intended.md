@@ -1,2 +1,2 @@
 ## Class diagram
-![class diagram](img/class_diagram.jpeg)
+![class diagram](./img/class-diagram.jpeg)
