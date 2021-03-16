@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class ConsoleUi {
   
-  Scanner scan = new Scanner(System.in);
-
   /**
    * Represents the options a player has.
    */
@@ -27,11 +25,37 @@ public class ConsoleUi {
     System.out.println("1. Manage recipes");
     System.out.println("2. Manage ingredients");
     System.out.println("3. Save and exit");
-    System.out.print("Pick an option: ");
-    // int option = scan.nextInt();
+
+    int option = getInputNumber();
+    System.out.println(option);
   }
 
- // scan.close();
+  
+  public Option getOption() {
+    int n;
 
+    do {
+      n = getInputNumber();
+    } while (n < 1 || n > 5);
+      switch (n) {
+        case 1: return Option.LIST;
+        case 2: return Option.ADD;
+        case 3: return Option.DELETE;
+        case 4: return Option.SEARCH;
+        case 5: return Option.QUIT;
+        default: break;
+    }
+    return Option.None;
+  }
+
+
+  private int getInputNumber() {
+    System.out.print("Pick an option: ");
+    Scanner scan = new Scanner(System.in);
+
+    int option = scan.nextInt();
+    scan.close();
+    return option;
+  }
 
 }
