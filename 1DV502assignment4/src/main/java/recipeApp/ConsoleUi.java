@@ -20,14 +20,27 @@ public class ConsoleUi {
   /**
    * Adds a main menu.
    */
-  public void mainMenu() {
+  public int mainMenu() {
     System.out.println("***Main Menu***");
     System.out.println("1. Manage recipes");
     System.out.println("2. Manage ingredients");
     System.out.println("3. Save and exit");
 
     int option = getInputNumber();
-    System.out.println(option);
+    return option;
+  }
+
+  public void recipeMenu() {
+    System.out.println("1. List recipes");
+    System.out.println("2. New recipe");
+    System.out.println("3. Search recipe");
+    System.out.println("4. Save and exit");
+  }
+
+  public void ingredientMenu() {
+    System.out.println("1. List ingredients");
+    System.out.println("2. New ingredient");
+    System.out.println("3. Save and exit");
   }
 
   

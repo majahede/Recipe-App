@@ -9,7 +9,13 @@ public class RecipeApp {
   }
 
   private void start() {
-    ui.mainMenu();
+    int option = ui.mainMenu();
+    switch (option) {
+      case 1: ui.recipeMenu();
+      case 2: ui.ingredientMenu();
+      // case 3: quit();
+      default: break;
+  }
   }
   
   public static void main(String[] args) {
