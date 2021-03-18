@@ -8,4 +8,3 @@
  */
 
 rootProject.name = '1DV502assignment4'
-include('app')
