@@ -50,7 +50,7 @@ public class IngredientHandler {
   */
    public void readFromFile() {
     try {
-      FileInputStream f = new FileInputStream(new File("lib//test.txt"));
+      FileInputStream f = new FileInputStream(new File("lib//ingredients.txt"));
       ObjectInputStream o = new ObjectInputStream(f);
      
       boolean isAvailable = true;
@@ -78,7 +78,7 @@ public class IngredientHandler {
   public void writeToFile() {
      
     try {
-      FileOutputStream f = new FileOutputStream(new File("lib//test.txt"));
+      FileOutputStream f = new FileOutputStream(new File("lib//ingredients.txt"));
       ObjectOutputStream o = new ObjectOutputStream(f);
       // Write objects to file
       Set<Map.Entry<String, Ingredient> > entries 
