@@ -10,32 +10,24 @@ import java.io.ObjectOutputStream;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Set;
-import java.util.Scanner;
+// import java.util.Scanner;
 
 public class IngredientHandler {
 
   TreeMap<String, Ingredient> ingredients = new TreeMap<String, Ingredient>();
 
-  public Ingredient addIngredient() {
-    Scanner scan = new Scanner(System.in);
-
-    System.out.print("Name:");
-    String name = scan.nextLine();
-
-    System.out.print("Unit:");
-    String unit = scan.nextLine();
-
-    System.out.print("Price:");
-    int price = scan.nextInt();
-
-    Ingredient ingredient = new Ingredient(name, unit, price);
+  /*
+  * Add ingredient to ingredient list.
+  */
+  public void addIngredient(Ingredient ingredient) {
     
     ingredients.put(ingredient.getName(), ingredient);
    
-    scan.close();
-    return ingredient;
   }
 
+  /*
+  * List ingredients.
+  */
   public void listIngredients() {
     Set<String> keys = ingredients.keySet();
     for(String key: keys){
@@ -43,13 +35,19 @@ public class IngredientHandler {
     }
   }
 
+  /*
+  * Delete ingredient.
+  */
   public void deleteIngredient(String ingredient) {
     ingredients.remove(ingredient);
   }
 
+  /*
+  * Read ingredientfile.
+  */
    public void readFromFile() {
     try {
-      FileInputStream f = new FileInputStream(new File("lib//ingredients.txt"));
+      FileInputStream f = new FileInputStream(new File("lib//test.txt"));
       ObjectInputStream o = new ObjectInputStream(f);
      
       boolean isAvailable = true;
@@ -64,7 +62,7 @@ public class IngredientHandler {
     }
       o.close();
       f.close();
-
+  
   } catch (FileNotFoundException e) {
       System.out.println("File not found");
   } catch (IOException e) {
@@ -77,7 +75,7 @@ public class IngredientHandler {
   public void writeToFile() {
      
     try {
-      FileOutputStream f = new FileOutputStream(new File("lib//ingredients.txt"));
+      FileOutputStream f = new FileOutputStream(new File("lib//test.txt"));
       ObjectOutputStream o = new ObjectOutputStream(f);
       // Write objects to file
       Set<Map.Entry<String, Ingredient> > entries 

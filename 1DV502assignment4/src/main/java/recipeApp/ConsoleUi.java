@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class ConsoleUi {
 
-  private IngredientHandler ingredientHandler;
+ // private IngredientHandler ingredientHandler;
   private Scanner scan;
 
   ConsoleUi() {
-    ingredientHandler = new IngredientHandler();
+  //  ingredientHandler = new IngredientHandler();
     scan = new Scanner(System.in);
   }
   
@@ -29,31 +29,28 @@ public class ConsoleUi {
   /**
    * Adds a main menu.
    */
-  public void mainMenu() {
+  public char mainMenu() {
     System.out.println("***Main Menu***\n");
     System.out.println("1. Manage recipes (R)");
     System.out.println("2. Manage ingredients (I)");
     System.out.println("3. Save and exit (C)");
 
     char option = getInput(scan);
-    switch (option) {
-      case 'R': recipeMenu(); break;
-      case 'I': ingredientMenu(); break;
-      case 'C': closeApp(); break;
-      default: break;
-  }
+    return option;
   }
 
-  public void recipeMenu() {
+  public Option recipeMenu() {
     System.out.println("***Recipes***\n");
     System.out.println("List recipes (L)");
     System.out.println("New recipe (A)");
     System.out.println("Search recipe (S)");
     System.out.println("Back (B)");
     System.out.println("Save and exit (C)");
+    Option option = getOption();
+    return option;
   }
 
-  public void ingredientMenu() {
+  public Option ingredientMenu() {
     System.out.println("***Ingredients***\n");
     System.out.println("List ingredients (L)");
     System.out.println("New ingredient (A)");
@@ -61,40 +58,41 @@ public class ConsoleUi {
     System.out.println("Save and exit (C)");
   
     Option option = getOption();
-    switch (option) {
-      //case VIEW: 
-      case ADD: ingredientHandler.addIngredient(); break;
-      case QUIT: closeApp(); break;
-      case BACK: mainMenu(); break;
-      default: break;
-    }
+    return option;
   }
 
-  public void list () {
-    ingredientHandler.listIngredients();
-    System.out.println("View details (V)");
+  public Option list () {
+    System.out.println("View details(V)");
     System.out.println("Back (B)");
     System.out.println("Save and exit (C)");
     
     Option option = getOption();
-    switch (option) {
-      //case VIEW: 
-      case ADD: ingredientHandler.addIngredient(); break;
-      case QUIT: closeApp(); break;
-      case BACK: ingredientMenu(); break;
-      default: break;
-  }
+    return option;
 }
 
   public void viewDetails() {
 
   }
 
+  public Ingredient add() {
+    System.out.print("Name: ");
+    String name = scan.nextLine();
+
+    System.out.print("Unit: ");
+    String unit = scan.nextLine();
+
+    System.out.print("Price: ");
+    int price = scan.nextInt();
+    scan.nextLine();
+
+    Ingredient ingredient = new Ingredient(name, unit, price);
+    return ingredient;
+  }
+
   /**
    * Close app.
    */
   public void closeApp() {
-    ingredientHandler.writeToFile();
     System.out.println("Goodbye!");
   }
 
@@ -129,6 +127,7 @@ public class ConsoleUi {
     char option = scan.next().charAt(0);
    
     System.out.print("\n\n");
+    scan.nextLine();
     return option;
   }
 
