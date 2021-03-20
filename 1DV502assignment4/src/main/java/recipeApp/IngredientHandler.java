@@ -25,7 +25,7 @@ public class IngredientHandler {
     System.out.print("Unit:");
     String unit = scan.nextLine();
 
-    System.out.println("Price:");
+    System.out.print("Price:");
     int price = scan.nextInt();
 
     Ingredient ingredient = new Ingredient(name, unit, price);
