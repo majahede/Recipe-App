@@ -28,15 +28,24 @@ public class IngredientHandler {
     System.out.println("Price:");
     int price = scan.nextInt();
 
-    Ingredient person = new Ingredient(name, unit, price);
+    Ingredient ingredient = new Ingredient(name, unit, price);
+    
+    ingredients.put(ingredient.getName(), ingredient);
+   
     scan.close();
-    return person;
+    return ingredient;
   }
 
-  private void addToTree() {
-    Ingredient ingredient = addIngredient();
-    ingredients.put(ingredient.getName(), ingredient);
-   }
+  public void listIngredients() {
+    Set<String> keys = ingredients.keySet();
+    for(String key: keys){
+      System.out.println(key);
+    }
+  }
+
+  public void deleteIngredient(String ingredient) {
+    ingredients.remove(ingredient);
+  }
 
    public void readFromFile() {
     try {

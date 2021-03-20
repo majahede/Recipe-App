@@ -8,7 +8,6 @@ public class Ingredient implements Serializable{
   private String name;
   private String unit;
   private int price;
-  private int measure;
 
    /**
    * Creates a new ingredient.
@@ -20,24 +19,17 @@ public class Ingredient implements Serializable{
   }
 
   /**
-   * Returns the unit of the ingredient.
-   */
-  public String getunit() {
-    return unit;
-  }
-
-  /**
-   * Returns the measure of the ingredient.
-   */
-  public int getMeasure() {
-    return measure;
-  }
-
-  /**
    * Returns the name of the ingredient.
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Returns the unit of the ingredient.
+   */
+  public String getunit() {
+    return unit;
   }
 
   /**
@@ -49,7 +41,7 @@ public class Ingredient implements Serializable{
 
   @Override
   public String toString() {
-      return name + ";" + unit + ";" + price;
+      return name + ":" + unit + ":" + price;
   } 
 
 }
