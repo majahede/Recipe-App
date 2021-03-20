@@ -1,7 +1,10 @@
 package main.java.recipeApp;
 
-public class Ingredient {
+import java.io.Serializable;
 
+public class Ingredient implements Serializable{
+
+  private static final long serialVersionUID = 1L;
   private String name;
   private String unit;
   private int price;
@@ -10,10 +13,9 @@ public class Ingredient {
    /**
    * Creates a new ingredient.
    */
-  public Ingredient(String name, String unit, int measure, int price) {
+  public Ingredient(String name, String unit, int price) {
     this.name = name;
     this.unit = unit;
-    this.measure = measure;
     this.price = price;
   }
 
@@ -45,6 +47,9 @@ public class Ingredient {
     return price;
   }
 
-
+  @Override
+  public String toString() {
+      return name + ";" + unit + ";" + price;
+  } 
 
 }
