@@ -41,7 +41,7 @@ public class Ingredient implements Serializable{
 
   @Override
   public String toString() {
-      return name + ":" + unit + ":" + price;
+      return "Ingredient: " + name + "\nUnit: " + unit + "\nPrice: " + price;
   } 
 
 }

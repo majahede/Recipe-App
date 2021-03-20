@@ -70,8 +70,21 @@ public class ConsoleUi {
     return option;
 }
 
-  public void viewDetails() {
+  public String enterIngredient() {
+    System.out.print("Enter ingredient: ");
+    String ingredient = scan.nextLine();
+    return ingredient;
+  }
 
+  public Option viewDetails(Ingredient ingredient) {
+    System.out.println(ingredient);
+    System.out.println();
+    System.out.println("Delete (D)");
+    System.out.println("Back (B)");
+    System.out.println("Save and exit (C)");
+
+    Option option = getOption();
+    return option;
   }
 
   public Ingredient add() {

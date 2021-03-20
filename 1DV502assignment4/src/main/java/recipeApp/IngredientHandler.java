@@ -20,9 +20,7 @@ public class IngredientHandler {
   * Add ingredient to ingredient list.
   */
   public void addIngredient(Ingredient ingredient) {
-    
     ingredients.put(ingredient.getName(), ingredient);
-   
   }
 
   /*
@@ -33,6 +31,11 @@ public class IngredientHandler {
     for(String key: keys){
       System.out.println(key);
     }
+  }
+
+  public Ingredient getIngredient(String ingredient) {
+    Ingredient i = ingredients.get(ingredient);
+    return i;
   }
 
   /*

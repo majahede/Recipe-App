@@ -39,11 +39,23 @@ public class RecipeApp {
     }
   }
 
+  private void viewDetails() {
+    String i = ui.enterIngredient();
+    Ingredient ingredient = ingredientHandler.getIngredient(i);
+    ConsoleUi.Option option = ui.viewDetails(ingredient);
+    switch (option) {
+      //case DELETE: delete(); break;
+      case BACK: mainMenu(); break;
+      case QUIT: closeApp(); break;
+      default: break;
+    }
+  }
+
   private void list() {
     ingredientHandler.listIngredients();
     ConsoleUi.Option option = ui.list();
     switch (option) {
-      //case VIEW: 
+      case VIEW: viewDetails(); break;
       case BACK: ingredientMenu(); break;
       case QUIT: closeApp(); break;
       default: break;
