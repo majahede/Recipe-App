@@ -3,14 +3,17 @@ package main.java.recipeApp;
 public class RecipeApp {
   private ConsoleUi ui;
   private IngredientHandler ingredientHandler;
+  private RecipeHandler recipeHandler;
 
   RecipeApp() {
     ui = new ConsoleUi();
     ingredientHandler = new IngredientHandler();
+    recipeHandler = new RecipeHandler();
   }
 
   private void startApp() {
     ingredientHandler.readFromFile();
+    recipeHandler.readFromFile();
     mainMenu();
   }
 
@@ -25,7 +28,15 @@ public class RecipeApp {
   }
 
   private void recipeMenu() {
-    // ConsoleUi.Option option = ui.recipeMenu();
+    ConsoleUi.Option option = ui.recipeMenu();
+    switch (option) {
+      case LIST: list(); break;
+      case ADD: add(); break;
+      //case SEARCH: search(); break;
+      case QUIT: closeApp(); break;
+      case BACK: mainMenu(); break;
+      default: break;
+    }
   }
 
   private void ingredientMenu() {
@@ -76,6 +87,7 @@ public class RecipeApp {
 
   private void closeApp() {
     ingredientHandler.writeToFile();
+    recipeHandler.writeToFile();
     ui.closeApp();
   }
 
