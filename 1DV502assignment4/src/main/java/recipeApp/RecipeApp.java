@@ -25,7 +25,7 @@ public class RecipeApp {
   }
 
   private void recipeMenu() {
-    ConsoleUi.Option option = ui.recipeMenu();
+    //ConsoleUi.Option option = ui.recipeMenu();
   }
 
   private void ingredientMenu() {
@@ -44,11 +44,17 @@ public class RecipeApp {
     Ingredient ingredient = ingredientHandler.getIngredient(i);
     ConsoleUi.Option option = ui.viewDetails(ingredient);
     switch (option) {
-      //case DELETE: delete(); break;
+      case DELETE: delete(i); break;
       case BACK: mainMenu(); break;
       case QUIT: closeApp(); break;
       default: break;
     }
+  }
+
+
+  private void delete(String ingredient) {
+    ingredientHandler.deleteIngredient(ingredient);
+    mainMenu();
   }
 
   private void list() {
