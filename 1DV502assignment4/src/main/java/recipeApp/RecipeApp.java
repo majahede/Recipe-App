@@ -25,7 +25,7 @@ public class RecipeApp {
   }
 
   private void recipeMenu() {
-    //ConsoleUi.Option option = ui.recipeMenu();
+    // ConsoleUi.Option option = ui.recipeMenu();
   }
 
   private void ingredientMenu() {

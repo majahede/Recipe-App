@@ -65,7 +65,7 @@ public class ConsoleUi {
     System.out.println("View details(V)");
     System.out.println("Back (B)");
     System.out.println("Save and exit (C)");
-    
+
     Option option = getOption();
     return option;
 }

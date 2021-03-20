@@ -11,52 +11,55 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.Set;
 
-public class IngredientHandler {
+public class RecipeHandler {
 
-  TreeMap<String, Ingredient> ingredients = new TreeMap<String, Ingredient>();
+  TreeMap<String, Recipe> recipes = new TreeMap<String, Recipe>();
 
   /*
-  * Add ingredient to ingredient list.
+  * Add recipe to recipe list.
   */
-  public void addIngredient(Ingredient ingredient) {
-    ingredients.put(ingredient.getName(), ingredient);
+  public void addRecipe(Recipe recipe) {
+    recipes.put(recipe.getName(), recipe);
   }
 
   /*
-  * List ingredients.
+  * List recipes.
   */
-  public void listIngredients() {
-    Set<String> keys = ingredients.keySet();
+  public void listRecipes() {
+    Set<String> keys = recipes.keySet();
     for(String key: keys){
       System.out.println(key);
     }
   }
 
-  public Ingredient getIngredient(String ingredient) {
-    Ingredient i = ingredients.get(ingredient);
-    return i;
-  }
-
-  /*
-  * Delete ingredient.
+   /*
+  * Get recipe.
   */
-  public void deleteIngredient(String ingredient) {
-    ingredients.remove(ingredient);
+  public Recipe getRecipe(String recipe) {
+    Recipe r = recipes.get(recipe);
+    return r;
   }
 
   /*
-  * Read ingredientfile.
+  * Delete recipe.
+  */
+  public void deleteRecipe(String recipe) {
+    recipes.remove(recipe);
+  }
+
+  /*
+  * Read recipefile.
   */
    public void readFromFile() {
     try {
-      FileInputStream f = new FileInputStream(new File("lib//ingredients.txt"));
+      FileInputStream f = new FileInputStream(new File("lib//recipes.txt"));
       ObjectInputStream o = new ObjectInputStream(f);
      
       boolean isAvailable = true;
       while(isAvailable){
         if(f.available() != 0){
-         Ingredient ingredient = (Ingredient) o.readObject();    
-         ingredients.put(ingredient.getName(), ingredient);
+          Recipe recipe = (Recipe) o.readObject();    
+          recipes.put(recipe.getName(), recipe);
         }
         else {
         isAvailable = false;
@@ -74,15 +77,18 @@ public class IngredientHandler {
   }
   }
 
+  /*
+  * Write recipes to file.
+  */
   public void writeToFile() {
      
     try {
-      FileOutputStream f = new FileOutputStream(new File("lib//ingredients.txt"));
+      FileOutputStream f = new FileOutputStream(new File("lib//recipes.txt"));
       ObjectOutputStream o = new ObjectOutputStream(f);
       // Write objects to file
-      Set<Map.Entry<String, Ingredient> > entries 
-      = ingredients.entrySet(); 
-      for (Map.Entry<String, Ingredient> entry : entries) { 
+      Set<Map.Entry<String, Recipe> > entries 
+      = recipes.entrySet(); 
+      for (Map.Entry<String, Recipe> entry : entries) { 
         o.writeObject(entry.getValue());
     } 
       o.close();
