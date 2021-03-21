@@ -1,47 +1,20 @@
 package main.java.recipeApp;
 
-import java.io.Serializable;
 
-public class RecipeIngredient implements Serializable {
-
+public class RecipeIngredient extends Ingredient {
   private static final long serialVersionUID = 1L;
-  private String name;
-  private String unit;
   private double amount;
   private String comment;
-  private double price;
-  private boolean isDividable;
+
 
    /**
    * Creates a new ingredient.
    */
   public RecipeIngredient(String name, String unit, double amount, String comment, double price, boolean isDividable) {
-    this.name = name;
-    this.unit = unit;
+    super(name, unit, price, isDividable);
+    this.comment = comment;
     this.amount = amount;
-    this.price = price;
-    this.isDividable = isDividable;
-  }
 
-  /**
-   * Returns the name of the ingredient.
-   */
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Returns the unit of the ingredient.
-   */
-  public String getUnit() {
-    return unit;
-  }
-
-   /**
-   * Returns the name of the ingredient.
-   */
-  public boolean checkIfDividable() {
-    return isDividable;
   }
 
    /**
@@ -65,16 +38,11 @@ public class RecipeIngredient implements Serializable {
     return comment;
   }
 
-  /**
-   * Returns the price of the ingredient.
-   */
-  public double getPrice() {
-    return price;
-  }
+  
 
   @Override
   public String toString() {
-      return name + ","  + unit + "," + amount + "," + comment + "," + price + ";";
+      return getName() + ","  + getUnit() + "," + amount + "," + comment + "," + getPrice() + ";";
   } 
 
 }

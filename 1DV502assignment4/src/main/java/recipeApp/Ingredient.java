@@ -37,7 +37,7 @@ public class Ingredient implements Serializable{
   /**
    * Returns the unit of the ingredient.
    */
-  public String getunit() {
+  public String getUnit() {
     return unit;
   }
 

@@ -209,21 +209,27 @@ public class ConsoleUi {
     
     System.out.print("Comment: ");
     String comment = scan.nextLine();
+   /* if(comment == null) {
+      comment = "...";
+    }*/
 
     System.out.print("Price: ");
     double price = scan.nextDouble();
     scan.nextLine();
 
     boolean isDividable = true;
-    System.out.print("Is ingredient dividable? (Y/N): ");
-    char c = scan.next().charAt(0);
-    scan.nextLine();
-    if (c == 'Y') {
-     isDividable = true;
-    } else if(c == 'N') {
-      isDividable = false;
-    }
 
+    char c;
+    do {
+      System.out.print("Is ingredient dividable? (Y/N): ");
+      c = scan.next().charAt(0);
+      scan.nextLine();
+    } while (!(c == 'Y' || c == 'N'));
+       switch (c) {
+        case 'Y': isDividable = true; break;
+        case 'N': isDividable = false; break;
+      }
+     
     RecipeIngredient ingredient = new RecipeIngredient(name, unit, amount, comment, price, isDividable);
     return ingredient;
   }
