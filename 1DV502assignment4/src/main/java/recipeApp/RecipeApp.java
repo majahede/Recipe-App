@@ -50,45 +50,56 @@ public class RecipeApp {
     }
   }
 
-  private void viewDetails() {
-    String i = ui.enterIngredient();
-    Ingredient ingredient = ingredientHandler.getIngredient(i);
-    ConsoleUi.Option option = ui.viewDetails(ingredient);
-    switch (option) {
-      case DELETE: delete(i); break;
-      case BACK: mainMenu(); break;
-      case QUIT: closeApp(); break;
-      default: break;
+  private void viewDetails(String type) {
+    if(type.equals("ingredient")) {
+      String i = ui.enterName("ingredient");
+      Ingredient ingredient = ingredientHandler.getIngredient(i);
+      ConsoleUi.Option option = ui.viewIngredientDetails(ingredient);
+      switch (option) {
+        case DELETE: deleteIngredient(i); break;
+        case BACK: mainMenu(); break;
+        case QUIT: closeApp(); break;
+        default: break;
+      }
+    } else if(type.equals("recipe")) {
+      String r = ui.enterName("recipe");
+      Recipe recipe = recipeHandler.getRecipe(r);
+      ConsoleUi.Option option = ui.viewRecipeDetails(recipe);
+      switch (option) {
+        case DELETE: deleteRecipe(r); break;
+        case BACK: mainMenu(); break;
+        case QUIT: closeApp(); break;
+        default: break;
+      }
     }
+   
   }
 
 
-  private void delete(String ingredient) {
+  private void deleteIngredient(String ingredient) {
     ingredientHandler.deleteIngredient(ingredient);
+    mainMenu();
+  }
+
+  private void deleteRecipe(String recipe) {
+    recipeHandler.deleteRecipe(recipe);
     mainMenu();
   }
 
   private void list(String type) {
     if(type.equals("ingredient")) {
       ingredientHandler.listIngredients();
-      ConsoleUi.Option option = ui.list();
-      switch (option) {
-        case VIEW: viewDetails(); break;
-        case BACK: ingredientMenu(); break;
-        case QUIT: closeApp(); break;
-        default: break;
-      }
+
     } else if (type.equals("recipe")) {
       recipeHandler.listRecipes();
+      }
       ConsoleUi.Option option = ui.list();
       switch (option) {
-        case VIEW: viewDetails(); break;
+        case VIEW: viewDetails(type); break;
         case BACK: recipeMenu(); break;
         case QUIT: closeApp(); break;
         default: break;
-      }
-    }
-   
+    } 
   }
 
   private void add(String type) {

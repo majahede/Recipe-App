@@ -28,7 +28,7 @@ public class ConsoleUi {
   }
 
   /**
-   * Adds a main menu.
+   * Prints a main menu.
    */
   public char mainMenu() {
     System.out.println("***Main Menu***\n");
@@ -40,6 +40,9 @@ public class ConsoleUi {
     return option;
   }
 
+  /**
+   * Prints a recipe menu.
+   */
   public Option recipeMenu() {
     System.out.println("***Recipes***\n");
     System.out.println("List recipes (L)");
@@ -51,6 +54,9 @@ public class ConsoleUi {
     return option;
   }
 
+  /**
+   * Prints ingredient menu.
+   */
   public Option ingredientMenu() {
     System.out.println("***Ingredients***\n");
     System.out.println("List ingredients (L)");
@@ -62,6 +68,9 @@ public class ConsoleUi {
     return option;
   }
 
+  /**
+   * Print options in list menu.
+   */
   public Option list () {
     System.out.println("View details(V)");
     System.out.println("Back (B)");
@@ -71,13 +80,19 @@ public class ConsoleUi {
     return option;
 }
 
-  public String enterIngredient() {
-    System.out.print("Enter ingredient: ");
+ /**
+   * Get ingredient or recipe name from user.
+   */
+  public String enterName(String type) {
+    System.out.print("Enter " + type + ": ");
     String ingredient = scan.nextLine();
     return ingredient;
   }
 
-  public Option viewDetails(Ingredient ingredient) {
+  /**
+   * Prints detail of an ingredient.
+   */
+  public Option viewIngredientDetails(Ingredient ingredient) {
     System.out.println(ingredient);
     System.out.println();
     System.out.println("Delete (D)");
@@ -87,6 +102,22 @@ public class ConsoleUi {
     Option option = getOption();
     return option;
   }
+
+  /**
+   * Prints detail of an ingredient.
+   */
+  public Option viewRecipeDetails(Recipe recipe) {
+    System.out.println(recipe);
+    System.out.println();
+    System.out.println("Delete (D)");
+    System.out.println("Back (B)");
+    System.out.println("Save and exit (C)");
+
+    Option option = getOption();
+    return option;
+  }
+
+
 
   public Ingredient addIngredient() {
     System.out.print("Name: ");
@@ -105,7 +136,7 @@ public class ConsoleUi {
 
   public Recipe addRecipe() {
     ArrayList<RecipeIngredient> ingredients = new ArrayList<RecipeIngredient>();
-    
+
     System.out.print("Name: ");
     String name = scan.nextLine();
 
