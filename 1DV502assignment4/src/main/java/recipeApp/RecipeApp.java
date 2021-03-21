@@ -1,5 +1,7 @@
 package main.java.recipeApp;
 
+import java.util.ArrayList;
+
 public class RecipeApp {
   private ConsoleUi ui;
   private IngredientHandler ingredientHandler;
@@ -109,6 +111,12 @@ public class RecipeApp {
     } else if (type.equals("recipe")) {
       Recipe recipe = ui.addRecipe();
       recipeHandler.addRecipe(recipe);
+      ArrayList<RecipeIngredient> ingredients = recipe.getIngredients();
+      for (int counter = 0; counter < ingredients.size(); counter++) {
+        RecipeIngredient ri = ingredients.get(counter);
+        Ingredient i = new Ingredient(ri.getName(), ri.getUnit(), ri.getPrice());
+        ingredientHandler.addIngredient(i);
+      }
     }
     
     mainMenu();

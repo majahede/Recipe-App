@@ -31,14 +31,14 @@ public class RecipeIngredient implements Serializable {
   /**
    * Returns the unit of the ingredient.
    */
-  public String getunit() {
+  public String getUnit() {
     return unit;
   }
 
    /**
    * Returns the unit of the ingredient.
    */
-  public int getamount() {
+  public int getAmount() {
     return amount;
   }
 
