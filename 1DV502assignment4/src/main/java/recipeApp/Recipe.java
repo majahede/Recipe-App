@@ -57,4 +57,9 @@ public class Recipe implements Serializable {
     return price;
   }*/
 
+  @Override
+  public String toString() {
+      return "Recipe: " + name + "\nPortions: " + portions + "\nIngredients: " + ingredients + "\nInstructions: " + instructions;
+  } 
+
 }

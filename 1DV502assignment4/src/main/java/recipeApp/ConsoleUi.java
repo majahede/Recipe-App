@@ -1,5 +1,6 @@
 package main.java.recipeApp;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsoleUi {
@@ -87,7 +88,7 @@ public class ConsoleUi {
     return option;
   }
 
-  public Ingredient add() {
+  public Ingredient addIngredient() {
     System.out.print("Name: ");
     String name = scan.nextLine();
 
@@ -99,6 +100,59 @@ public class ConsoleUi {
     scan.nextLine();
 
     Ingredient ingredient = new Ingredient(name, unit, price);
+    return ingredient;
+  }
+
+  public Recipe addRecipe() {
+    ArrayList<RecipeIngredient> ingredients = new ArrayList<RecipeIngredient>();
+    
+    System.out.print("Name: ");
+    String name = scan.nextLine();
+
+    System.out.print("Portions: ");
+    int portions = scan.nextInt();
+    scan.nextLine();
+
+    do {
+    System.out.print("New ingredient(Y/N): ");
+    char newIngredient = scan.next().charAt(0);
+    scan.nextLine();
+    if (newIngredient == 'Y') {
+     RecipeIngredient i = addRecipeIngredient();
+     ingredients.add(i);
+    } else if(newIngredient == 'N') {
+      break;
+    }
+    } while(true);
+    
+
+    System.out.print("Instructions: ");
+    String instructions = scan.nextLine();
+  
+    Recipe recipe = new Recipe(name, portions, ingredients, instructions);
+    
+    return recipe;
+  }
+
+  public RecipeIngredient addRecipeIngredient() {
+    System.out.print("Name: ");
+    String name = scan.nextLine();
+
+    System.out.print("Unit: ");
+    String unit = scan.nextLine();
+
+    System.out.print("Amount: ");
+    int amount = scan.nextInt();
+    scan.nextLine();
+    
+    System.out.print("Comment: ");
+    String comment = scan.nextLine();
+
+    System.out.print("Price: ");
+    int price = scan.nextInt();
+    scan.nextLine();
+
+    RecipeIngredient ingredient = new RecipeIngredient(name, unit, amount, comment, price);
     return ingredient;
   }
 

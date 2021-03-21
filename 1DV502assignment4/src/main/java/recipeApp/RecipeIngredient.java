@@ -54,7 +54,7 @@ public class RecipeIngredient {
 
   @Override
   public String toString() {
-      return "Ingredient: " + name + "\nUnit: " + unit + "\nPrice: " + price;
+      return "Ingredient: " + name + "\nUnit: " + unit + "\nAmount: " + amount + "\nComment: " + comment + "\nPrice: " + price;
   } 
 
 }

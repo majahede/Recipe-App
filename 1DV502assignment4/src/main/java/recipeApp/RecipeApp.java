@@ -31,7 +31,7 @@ public class RecipeApp {
     ConsoleUi.Option option = ui.recipeMenu();
     switch (option) {
       case LIST: list(); break;
-      case ADD: add(); break;
+      case ADD: add("recipe"); break;
       //case SEARCH: search(); break;
       case QUIT: closeApp(); break;
       case BACK: mainMenu(); break;
@@ -43,7 +43,7 @@ public class RecipeApp {
     ConsoleUi.Option option = ui.ingredientMenu();
     switch (option) {
       case LIST: list(); break;
-      case ADD: add(); break;
+      case ADD: add("ingredient"); break;
       case QUIT: closeApp(); break;
       case BACK: mainMenu(); break;
       default: break;
@@ -79,9 +79,15 @@ public class RecipeApp {
     }
   }
 
-  private void add() {
-    Ingredient ingredient = ui.add();
-    ingredientHandler.addIngredient(ingredient);
+  private void add(String type) {
+    if(type.equals("ingredient")) {
+      Ingredient ingredient = ui.addIngredient();
+      ingredientHandler.addIngredient(ingredient);
+    } else if (type.equals("recipe")) {
+      Recipe recipe = ui.addRecipe();
+      recipeHandler.addRecipe(recipe);
+    }
+    
     mainMenu();
   }
 
