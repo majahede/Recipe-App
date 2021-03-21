@@ -30,7 +30,7 @@ public class RecipeApp {
   private void recipeMenu() {
     ConsoleUi.Option option = ui.recipeMenu();
     switch (option) {
-      case LIST: list(); break;
+      case LIST: list("recipe"); break;
       case ADD: add("recipe"); break;
       //case SEARCH: search(); break;
       case QUIT: closeApp(); break;
@@ -42,7 +42,7 @@ public class RecipeApp {
   private void ingredientMenu() {
     ConsoleUi.Option option = ui.ingredientMenu();
     switch (option) {
-      case LIST: list(); break;
+      case LIST: list("ingredient"); break;
       case ADD: add("ingredient"); break;
       case QUIT: closeApp(); break;
       case BACK: mainMenu(); break;
@@ -68,15 +68,28 @@ public class RecipeApp {
     mainMenu();
   }
 
-  private void list() {
-    ingredientHandler.listIngredients();
-    ConsoleUi.Option option = ui.list();
-    switch (option) {
-      case VIEW: viewDetails(); break;
-      case BACK: ingredientMenu(); break;
-      case QUIT: closeApp(); break;
-      default: break;
+  private void list(String type) {
+
+    if(type.equals("ingredient")) {
+      ingredientHandler.listIngredients();
+      ConsoleUi.Option option = ui.list();
+      switch (option) {
+        case VIEW: viewDetails(); break;
+        case BACK: ingredientMenu(); break;
+        case QUIT: closeApp(); break;
+        default: break;
+      }
+    } else if (type.equals("recipe")) {
+      recipeHandler.listRecipes();
+      ConsoleUi.Option option = ui.list();
+      switch (option) {
+        case VIEW: viewDetails(); break;
+        case BACK: recipeMenu(); break;
+        case QUIT: closeApp(); break;
+        default: break;
+      }
     }
+   
   }
 
   private void add(String type) {
