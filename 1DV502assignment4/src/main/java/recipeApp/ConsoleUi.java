@@ -5,16 +5,14 @@ import java.util.Scanner;
 
 public class ConsoleUi {
 
- // private IngredientHandler ingredientHandler;
   private Scanner scan;
 
   ConsoleUi() {
-  //  ingredientHandler = new IngredientHandler();
     scan = new Scanner(System.in);
   }
   
   /**
-   * Represents the options a player has.
+   * Represents the options the user has.
    */
   public enum Option {
     LIST,
@@ -86,8 +84,20 @@ public class ConsoleUi {
    */
   public String enterName(String type) {
     System.out.print("Enter " + type + ": ");
-    String ingredient = scan.nextLine();
-    return ingredient;
+    String input = scan.nextLine();
+    return input;
+  }
+
+ /**
+   * Search.
+   */
+  public int search() {
+    System.out.println("Search by ingredient (1)");
+    System.out.println("Search by price (2)");
+    System.out.print("Pick an option: ");
+    int type = scan.nextInt();
+    scan.nextLine();
+    return type;
   }
 
   /**

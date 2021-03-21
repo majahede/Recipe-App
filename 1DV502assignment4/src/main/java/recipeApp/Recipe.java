@@ -31,6 +31,13 @@ public class Recipe implements Serializable {
   }
 
   /**
+   * Returns the name of the ingredient.
+   */
+  public double getPrice() {
+    return price;
+  }
+
+  /**
    * Returns the unit of the ingredient.
    */
   public int getPortions() {

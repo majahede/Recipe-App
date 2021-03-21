@@ -34,7 +34,7 @@ public class RecipeApp {
     switch (option) {
       case LIST: list("recipe"); break;
       case ADD: add("recipe"); break;
-      //case SEARCH: search(); break;
+      case SEARCH: searchRecipe(); break;
       case QUIT: closeApp(); break;
       case BACK: mainMenu(); break;
       default: break;
@@ -100,6 +100,33 @@ public class RecipeApp {
     recipeHandler.deleteRecipe(recipe);
     mainMenu();
   }
+
+  private void searchRecipe() {
+     int choice = ui.search();
+     String input = "";
+     if(choice == 1) {
+      recipeHandler.setStrategy(new SearchByIngredient(recipeHandler.recipes));
+      input = ui.enterName("ingredient");
+
+     } else if (choice == 2) {
+      recipeHandler.setStrategy(new SearchByPrice(recipeHandler.recipes));
+      input = ui.enterName("max price");
+     }
+
+     ArrayList<Recipe> searchedRecipes = recipeHandler.search(input);
+     for (int counter = 0; counter < searchedRecipes.size(); counter++) {
+      Recipe recipe = searchedRecipes.get(counter);
+      System.out.println(recipe.getName()); 		
+    }   	
+    ConsoleUi.Option option = ui.list();
+    switch (option) {
+      case VIEW: viewDetails("recipe"); break;
+      case BACK: recipeMenu(); break;
+      case QUIT: closeApp(); break;
+      default: break;
+  } 
+    } 
+  
 
   private void list(String type) {
     if(type.equals("ingredient")) {

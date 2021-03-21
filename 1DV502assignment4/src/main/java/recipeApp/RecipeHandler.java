@@ -7,13 +7,28 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Set;
 
 public class RecipeHandler {
+  private SearchInterface strategy;
 
   TreeMap<String, Recipe> recipes = new TreeMap<String, Recipe>();
+
+  public void setStrategy(SearchInterface s) {
+    strategy = s;
+  }
+
+  public SearchInterface getStrategy() {
+    return strategy;
+  }
+
+  public ArrayList<Recipe> search(String input) {
+    return strategy.searchStrategy(input);
+  }
+
 
   /*
   * Add recipe to recipe list.
