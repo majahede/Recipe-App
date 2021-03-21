@@ -61,9 +61,9 @@ public class Recipe implements Serializable {
     this.portions = num;
       for (int counter = 0; counter < this.ingredients.size(); counter++) {
         RecipeIngredient ri = ingredients.get(counter);
-        int amount = ri.getAmount();
-        int one = amount / oldNum;
-        int newAmount = one * num;
+        double amount = ri.getAmount();
+        double one = amount / oldNum;
+        double newAmount = one * num;
         ri.setAmount(newAmount);
       }
   }

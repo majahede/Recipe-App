@@ -7,14 +7,14 @@ public class RecipeIngredient implements Serializable {
   private static final long serialVersionUID = 1L;
   private String name;
   private String unit;
-  private int amount;
+  private double amount;
   private String comment;
-  private int price;
+  private double price;
 
    /**
    * Creates a new ingredient.
    */
-  public RecipeIngredient(String name, String unit, int amount, String comment, int price) {
+  public RecipeIngredient(String name, String unit, double amount, String comment, double price) {
     this.name = name;
     this.unit = unit;
     this.amount = amount;
@@ -38,14 +38,14 @@ public class RecipeIngredient implements Serializable {
    /**
    * Returns the unit of the ingredient.
    */
-  public int getAmount() {
+  public double getAmount() {
     return amount;
   }
 
    /**
    * Returns the unit of the ingredient.
    */
-  public void setAmount(int amount) {
+  public void setAmount(double amount) {
     this.amount = amount;
   }
 
@@ -59,7 +59,7 @@ public class RecipeIngredient implements Serializable {
   /**
    * Returns the price of the ingredient.
    */
-  public int getPrice() {
+  public double getPrice() {
     return price;
   }
 

@@ -52,7 +52,7 @@ public class RecipeHandler {
   */
    public void readFromFile() {
     try {
-      FileInputStream f = new FileInputStream(new File("recipes.txt"));
+      FileInputStream f = new FileInputStream(new File("recipes1.txt"));
       ObjectInputStream o = new ObjectInputStream(f);
      
       boolean isAvailable = true;
@@ -83,7 +83,7 @@ public class RecipeHandler {
   public void writeToFile() {
      
     try {
-      FileOutputStream f = new FileOutputStream(new File("recipes.txt"));
+      FileOutputStream f = new FileOutputStream(new File("recipes1.txt"));
       ObjectOutputStream o = new ObjectOutputStream(f);
       // Write objects to file
       Set<Map.Entry<String, Recipe> > entries 

@@ -7,12 +7,12 @@ public class Ingredient implements Serializable{
   private static final long serialVersionUID = 1L;
   private String name;
   private String unit;
-  private int price;
+  private double price;
 
    /**
    * Creates a new ingredient.
    */
-  public Ingredient(String name, String unit, int price) {
+  public Ingredient(String name, String unit, double price) {
     this.name = name;
     this.unit = unit;
     this.price = price;
@@ -35,7 +35,7 @@ public class Ingredient implements Serializable{
   /**
    * Returns the price of the ingredient.
    */
-  public int getPrice() {
+  public double getPrice() {
     return price;
   }
 

@@ -138,7 +138,7 @@ public class ConsoleUi {
     String unit = scan.nextLine();
 
     System.out.print("Price: ");
-    int price = scan.nextInt();
+    double price = scan.nextDouble();
     scan.nextLine();
 
     Ingredient ingredient = new Ingredient(name, unit, price);
@@ -184,14 +184,14 @@ public class ConsoleUi {
     String unit = scan.nextLine();
 
     System.out.print("Amount: ");
-    int amount = scan.nextInt();
+    double amount = scan.nextDouble();
     scan.nextLine();
     
     System.out.print("Comment: ");
     String comment = scan.nextLine();
 
     System.out.print("Price: ");
-    int price = scan.nextInt();
+    double price = scan.nextDouble();
     scan.nextLine();
 
     RecipeIngredient ingredient = new RecipeIngredient(name, unit, amount, comment, price);
