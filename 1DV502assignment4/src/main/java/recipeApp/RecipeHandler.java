@@ -40,7 +40,7 @@ public class RecipeHandler {
   /*
   * List recipes.
   */
-  public void listRecipes() {
+  public void list() {
     Set<String> keys = recipes.keySet();
     for(String key: keys){
       System.out.println(key);
@@ -58,8 +58,8 @@ public class RecipeHandler {
   /*
   * Delete recipe.
   */
-  public void deleteRecipe(String recipe) {
-    recipes.remove(recipe);
+  public void delete(String name) {
+    recipes.remove(name);
   }
 
   /*

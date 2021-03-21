@@ -25,7 +25,7 @@ public class IngredientHandler {
   /*
   * List ingredients.
   */
-  public void listIngredients() {
+  public void list() {
     Set<String> keys = ingredients.keySet();
     for(String key: keys){
       System.out.println(key);
@@ -40,8 +40,8 @@ public class IngredientHandler {
   /*
   * Delete ingredient.
   */
-  public void deleteIngredient(String ingredient) {
-    ingredients.remove(ingredient);
+  public void delete(String name) {
+    ingredients.remove(name);
   }
 
   /*

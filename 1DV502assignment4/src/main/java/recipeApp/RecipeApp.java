@@ -92,12 +92,12 @@ public class RecipeApp {
 
 
   private void deleteIngredient(String ingredient) {
-    ingredientHandler.deleteIngredient(ingredient);
+    ingredientHandler.delete(ingredient);
     mainMenu();
   }
 
   private void deleteRecipe(String recipe) {
-    recipeHandler.deleteRecipe(recipe);
+    recipeHandler.delete(recipe);
     mainMenu();
   }
 
@@ -130,10 +130,10 @@ public class RecipeApp {
 
   private void list(String type) {
     if(type.equals("ingredient")) {
-      ingredientHandler.listIngredients();
+      ingredientHandler.list();
 
     } else if (type.equals("recipe")) {
-      recipeHandler.listRecipes();
+      recipeHandler.list();
       }
       ConsoleUi.Option option = ui.list();
       switch (option) {
