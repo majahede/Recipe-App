@@ -8,14 +8,16 @@ public class Ingredient implements Serializable{
   private String name;
   private String unit;
   private double price;
+  private boolean isDividable;
 
    /**
    * Creates a new ingredient.
    */
-  public Ingredient(String name, String unit, double price) {
+  public Ingredient(String name, String unit, double price, boolean isDividable) {
     this.name = name;
     this.unit = unit;
     this.price = price;
+    this.isDividable = isDividable;
   }
 
   /**
@@ -23,6 +25,13 @@ public class Ingredient implements Serializable{
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Returns the name of the ingredient.
+   */
+  public boolean checkIfDividable() {
+    return isDividable;
   }
 
   /**

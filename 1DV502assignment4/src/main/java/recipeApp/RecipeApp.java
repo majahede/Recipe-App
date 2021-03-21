@@ -127,7 +127,7 @@ public class RecipeApp {
       ArrayList<RecipeIngredient> ingredients = recipe.getIngredients();
       for (int counter = 0; counter < ingredients.size(); counter++) {
         RecipeIngredient ri = ingredients.get(counter);
-        Ingredient i = new Ingredient(ri.getName(), ri.getUnit(), ri.getPrice());
+        Ingredient i = new Ingredient(ri.getName(), ri.getUnit(), ri.getPrice(), ri.checkIfDividable());
         ingredientHandler.addIngredient(i);
       }
     }

@@ -10,15 +10,17 @@ public class RecipeIngredient implements Serializable {
   private double amount;
   private String comment;
   private double price;
+  private boolean isDividable;
 
    /**
    * Creates a new ingredient.
    */
-  public RecipeIngredient(String name, String unit, double amount, String comment, double price) {
+  public RecipeIngredient(String name, String unit, double amount, String comment, double price, boolean isDividable) {
     this.name = name;
     this.unit = unit;
     this.amount = amount;
     this.price = price;
+    this.isDividable = isDividable;
   }
 
   /**
@@ -33,6 +35,13 @@ public class RecipeIngredient implements Serializable {
    */
   public String getUnit() {
     return unit;
+  }
+
+   /**
+   * Returns the name of the ingredient.
+   */
+  public boolean checkIfDividable() {
+    return isDividable;
   }
 
    /**

@@ -141,7 +141,17 @@ public class ConsoleUi {
     double price = scan.nextDouble();
     scan.nextLine();
 
-    Ingredient ingredient = new Ingredient(name, unit, price);
+    boolean isDividable = true;
+    System.out.print("Is ingredient dividable? (Y/N): ");
+    char c = scan.next().charAt(0);
+    scan.nextLine();
+    if (c == 'Y') {
+     isDividable = true;
+    } else if(c == 'N') {
+      isDividable = false;
+    }
+
+    Ingredient ingredient = new Ingredient(name, unit, price, isDividable);
     return ingredient;
   }
 
@@ -194,7 +204,17 @@ public class ConsoleUi {
     double price = scan.nextDouble();
     scan.nextLine();
 
-    RecipeIngredient ingredient = new RecipeIngredient(name, unit, amount, comment, price);
+    boolean isDividable = true;
+    System.out.print("Is ingredient dividable? (Y/N): ");
+    char c = scan.next().charAt(0);
+    scan.nextLine();
+    if (c == 'Y') {
+     isDividable = true;
+    } else if(c == 'N') {
+      isDividable = false;
+    }
+
+    RecipeIngredient ingredient = new RecipeIngredient(name, unit, amount, comment, price, isDividable);
     return ingredient;
   }
 
@@ -240,5 +260,4 @@ public class ConsoleUi {
     scan.nextLine();
     return option;
   }
-
 }

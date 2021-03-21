@@ -64,7 +64,14 @@ public class Recipe implements Serializable {
         double amount = ri.getAmount();
         double one = amount / oldNum;
         double newAmount = one * num;
-        ri.setAmount(newAmount);
+
+        if (!ri.checkIfDividable()) {
+          newAmount = Math.round(newAmount);
+          ri.setAmount(newAmount);
+        } else {
+          newAmount = (double) Math.round(newAmount * 100) / 100;
+          ri.setAmount(newAmount);
+        }
       }
   }
 
