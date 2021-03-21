@@ -209,9 +209,7 @@ public class ConsoleUi {
     
     System.out.print("Comment: ");
     String comment = scan.nextLine();
-   /* if(comment == null) {
-      comment = "...";
-    }*/
+ 
 
     System.out.print("Price: ");
     double price = scan.nextDouble();

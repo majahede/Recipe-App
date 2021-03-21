@@ -18,31 +18,29 @@ public class RecipeIngredient extends Ingredient {
   }
 
    /**
-   * Returns the unit of the ingredient.
+   * Returns the amount of the ingredient.
    */
   public double getAmount() {
     return amount;
   }
 
    /**
-   * Returns the unit of the ingredient.
+   * Sets the amount of the ingredient.
    */
   public void setAmount(double amount) {
     this.amount = amount;
   }
 
    /**
-   * Returns the comment of the ingredient.
+   * Returns the comment for the ingredient.
    */
   public String getComment() {
     return comment;
   }
 
   
-
   @Override
   public String toString() {
-      return getName() + ","  + getUnit() + "," + amount + "," + comment + "," + getPrice() + ";";
+    return getName() + ","  + getUnit() + "," + amount + "," + comment + "," + getPrice() + ";";
   } 
-
 }

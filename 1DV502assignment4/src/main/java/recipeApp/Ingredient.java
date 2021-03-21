@@ -28,7 +28,7 @@ public class Ingredient implements Serializable{
   }
 
   /**
-   * Returns the name of the ingredient.
+   * Checks if the ingredient is dividable.
    */
   public boolean checkIfDividable() {
     return isDividable;
@@ -50,7 +50,6 @@ public class Ingredient implements Serializable{
 
   @Override
   public String toString() {
-      return "Ingredient: " + name + "\nUnit: " + unit + "\nPrice: " + price;
+    return "Ingredient: " + name + "\nUnit: " + unit + "\nPrice: " + price;
   } 
-
 }
