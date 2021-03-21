@@ -13,16 +13,16 @@ import java.util.Set;
 
 public class IngredientHandler {
 
-  TreeMap<String, Ingredient> ingredients = new TreeMap<String, Ingredient>();
+  private TreeMap<String, Ingredient> ingredients = new TreeMap<String, Ingredient>();
 
-  /*
+ /** 
   * Add ingredient to ingredient list.
   */
   public void addIngredient(Ingredient ingredient) {
     ingredients.put(ingredient.getName(), ingredient);
   }
 
-  /*
+ /**
   * List ingredients.
   */
   public void list() {
@@ -32,19 +32,23 @@ public class IngredientHandler {
     }
   }
 
+
+  /**
+   * Get ingredient.
+   */
   public Ingredient getIngredient(String ingredient) {
     Ingredient i = ingredients.get(ingredient);
     return i;
   }
 
-  /*
+ /**
   * Delete ingredient.
   */
   public void delete(String name) {
     ingredients.remove(name);
   }
 
-  /*
+ /**
   * Read ingredientfile.
   */
    public void readFromFile() {
@@ -65,21 +69,24 @@ public class IngredientHandler {
       o.close();
       f.close();
   
-  } catch (FileNotFoundException e) {
-      System.out.println("File not found");
-  } catch (IOException e) {
-      e.printStackTrace();
-  } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-  }
+    } catch (FileNotFoundException e) {
+        System.out.println("File not found");
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
   }
 
+  /**
+   * Write ingredients to file.
+   */
   public void writeToFile() {
      
     try {
       FileOutputStream f = new FileOutputStream(new File("ingredients1.txt"));
       ObjectOutputStream o = new ObjectOutputStream(f);
-      // Write objects to file
+
       Set<Map.Entry<String, Ingredient> > entries 
       = ingredients.entrySet(); 
       for (Map.Entry<String, Ingredient> entry : entries) { 

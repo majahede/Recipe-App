@@ -10,7 +10,7 @@ public class Ingredient implements Serializable{
   private double price;
   private boolean isDividable;
 
-   /**
+  /**
    * Creates a new ingredient.
    */
   public Ingredient(String name, String unit, double price, boolean isDividable) {

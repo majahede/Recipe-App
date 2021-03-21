@@ -30,25 +30,21 @@ public class ConsoleUi {
    * Prints a main menu.
    */
   public char mainMenu() {
-    System.out.println("***Main Menu***\n");
-    System.out.println("1. Manage recipes (R)");
-    System.out.println("2. Manage ingredients (I)");
-    System.out.println("3. Save and exit (C)");
-
-    char option = getInput(scan);
-    return option;
+    System.out.println("***Main Menu***\n\nManage recipes (R)\nManage ingredients (I)\nSave and exit (C)");
+      char c;
+    do {
+      c = getInput(scan);
+    } while(!(c == 'R' || c == 'I' || c == 'C'));
+    
+    return c;
   }
 
   /**
    * Prints a recipe menu.
    */
   public Option recipeMenu() {
-    System.out.println("***Recipes***\n");
-    System.out.println("List recipes (L)");
-    System.out.println("New recipe (A)");
-    System.out.println("Search recipe (S)");
-    System.out.println("Back (B)");
-    System.out.println("Save and exit (C)");
+    System.out.println("***Recipes***\n\nList recipes (L)\nNew recipe (A)\nSearch recipe (S)\nBack (B)\nSave and exit (C)");
+   
     Option option = getOption();
     return option;
   }
@@ -57,12 +53,8 @@ public class ConsoleUi {
    * Prints ingredient menu.
    */
   public Option ingredientMenu() {
-    System.out.println("***Ingredients***\n");
-    System.out.println("List ingredients (L)");
-    System.out.println("New ingredient (A)");
-    System.out.println("Back (B)");
-    System.out.println("Save and exit (C)");
-  
+    System.out.println("***Ingredients***\nList ingredients (L)\nNew ingredient (A)\nBack (B)\nSave and exit (C)");
+   
     Option option = getOption();
     return option;
   }
@@ -71,15 +63,13 @@ public class ConsoleUi {
    * Print options in list menu.
    */
   public Option list () {
-    System.out.println("View details(V)");
-    System.out.println("Back (B)");
-    System.out.println("Save and exit (C)");
+    System.out.println("\n\nView details(V)\nBack (B)\nSave and exit (C)");
 
     Option option = getOption();
     return option;
 }
 
- /**
+  /**
    * Get ingredient or recipe name from user.
    */
   public String enterName(String type) {
@@ -88,49 +78,46 @@ public class ConsoleUi {
     return input;
   }
 
- /**
-   * Search.
+  /**
+   * Ask user for search type.
    */
   public int search() {
-    System.out.println("Search by ingredient (1)");
-    System.out.println("Search by price (2)");
-    System.out.print("Pick an option: ");
-    int type = scan.nextInt();
-    scan.nextLine();
+    System.out.println("Search by ingredient (1)\nSearch by price (2)");
+    int type;
+    do {
+      System.out.print("Pick an option: ");
+      type = scan.nextInt();
+      scan.nextLine();
+    } while(!(type == 1 || type == 2));
+   
     return type;
   }
 
   /**
-   * Prints detail of an ingredient.
+   * Prints details of an ingredient.
    */
   public Option viewIngredientDetails(Ingredient ingredient) {
-    System.out.println(ingredient);
-    System.out.println();
-    System.out.println("Delete (D)");
-    System.out.println("Back (B)");
-    System.out.println("Save and exit (C)");
+    System.out.println(ingredient + "\n");
 
+    System.out.println("Delete (D)\nBack (B)\nSave and exit (C)");
+   
     Option option = getOption();
     return option;
   }
 
   /**
-   * Prints detail of an ingredient.
+   * Prints details of a recipe.
    */
   public Option viewRecipeDetails(Recipe recipe) {
-    System.out.println(recipe);
-    System.out.println();
-    System.out.println("Delete (D)");
-    System.out.println("Edit portions (E)");
-    System.out.println("Back (B)");
-    System.out.println("Save and exit (C)");
-
+    System.out.println(recipe + "\n");
+    System.out.println("Delete (D)\nEdit portions (E)\nBack (B)\nSave and exit (C)");
+    
     Option option = getOption();
     return option;
   }
 
-   /**
-   * Prints detail of an ingredient.
+  /**
+   * Ask user for number of portions.
    */
   public int getNumOfPortions() {
     System.out.print("Enter number of portions: ");
@@ -140,6 +127,9 @@ public class ConsoleUi {
   }
 
 
+  /**
+   * Ask user for new ingredient.
+   */
   public Ingredient addIngredient() {
     System.out.print("Name: ");
     String name = scan.nextLine();
@@ -165,6 +155,10 @@ public class ConsoleUi {
     return ingredient;
   }
 
+
+  /**
+   * Ask user for recipe.
+   */
   public Recipe addRecipe() {
     ArrayList<RecipeIngredient> ingredients = new ArrayList<RecipeIngredient>();
 
@@ -176,18 +170,17 @@ public class ConsoleUi {
     scan.nextLine();
 
     do {
-    System.out.print("New ingredient(Y/N): ");
-    char newIngredient = scan.next().charAt(0);
-    scan.nextLine();
-    if (newIngredient == 'Y') {
-     RecipeIngredient i = addRecipeIngredient();
-     ingredients.add(i);
-    } else if(newIngredient == 'N') {
-      break;
-    }
+      System.out.print("New ingredient(Y/N): ");
+      char newIngredient = scan.next().charAt(0);
+      scan.nextLine();
+      if (newIngredient == 'Y') {
+        RecipeIngredient i = addRecipeIngredient();
+        ingredients.add(i);
+      } else if(newIngredient == 'N') {
+        break;
+      }
     } while(true);
     
-
     System.out.print("Instructions: ");
     String instructions = scan.nextLine();
   
@@ -196,6 +189,9 @@ public class ConsoleUi {
     return recipe;
   }
 
+  /**
+   * Ask user for recipe ingredient.
+   */
   public RecipeIngredient addRecipeIngredient() {
     System.out.print("Name: ");
     String name = scan.nextLine();
@@ -210,7 +206,6 @@ public class ConsoleUi {
     System.out.print("Comment: ");
     String comment = scan.nextLine();
  
-
     System.out.print("Price: ");
     double price = scan.nextDouble();
     scan.nextLine();
@@ -233,14 +228,14 @@ public class ConsoleUi {
   }
 
   /**
-   * Close app.
+   * Print out when closing app.
    */
   public void closeApp() {
     System.out.println("Goodbye!");
   }
 
   /**
-   * Get option.
+   * Get option from user.
    */
   public Option getOption() {
     char c;

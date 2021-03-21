@@ -77,39 +77,51 @@ public class RecipeApp {
     }
   }
 
+  /**
+   * Calls method to delete recipe and return to main menu.
+   */
   private void editPortions(Recipe recipe) {
     int portions = ui.getNumOfPortions();
     recipe.editPortions(portions);
-      ConsoleUi.Option option = ui.viewRecipeDetails(recipe);
-      switch (option) {
-        case DELETE: deleteRecipe(recipe.getName()); break;
-        case EDIT: editPortions(recipe); break;
-        case BACK: mainMenu(); break;
-        case QUIT: closeApp(); break;
-        default: break;
-      }
+    ConsoleUi.Option option = ui.viewRecipeDetails(recipe);
+
+    switch (option) {
+      case DELETE: deleteRecipe(recipe.getName()); break;
+      case EDIT: editPortions(recipe); break;
+      case BACK: mainMenu(); break;
+      case QUIT: closeApp(); break;
+      default: break;
+    }
   }
 
-
+  /**
+   * Calls method to delete ingredient and return to main menu.
+   */
   private void deleteIngredient(String ingredient) {
     ingredientHandler.delete(ingredient);
     mainMenu();
   }
 
+  /**
+   * Calls method to delete recipe and return to main menu.
+   */
   private void deleteRecipe(String recipe) {
     recipeHandler.delete(recipe);
     mainMenu();
   }
 
+  /**
+   * Prints out searched recipes.
+   */
   private void searchRecipe() {
      int choice = ui.search();
      String input = "";
      if(choice == 1) {
-      recipeHandler.setStrategy(new SearchByIngredient(recipeHandler.recipes));
+      recipeHandler.setStrategy(new SearchByIngredient(recipeHandler.getRecipes()));
       input = ui.enterName("ingredient");
 
      } else if (choice == 2) {
-      recipeHandler.setStrategy(new SearchByPrice(recipeHandler.recipes));
+      recipeHandler.setStrategy(new SearchByPrice(recipeHandler.getRecipes()));
       input = ui.enterName("max price");
      }
 
@@ -127,7 +139,9 @@ public class RecipeApp {
   } 
     } 
   
-
+  /**
+   * Calls method to list recipes or ingredients.
+   */
   private void list(String type) {
     if(type.equals("ingredient")) {
       ingredientHandler.list();
@@ -144,14 +158,19 @@ public class RecipeApp {
     } 
   }
 
+  /**
+   * Calls method to add ingredient or recipe.
+   */
   private void add(String type) {
     if(type.equals("ingredient")) {
       Ingredient ingredient = ui.addIngredient();
       ingredientHandler.addIngredient(ingredient);
+
     } else if (type.equals("recipe")) {
       Recipe recipe = ui.addRecipe();
       recipeHandler.addRecipe(recipe);
       ArrayList<RecipeIngredient> ingredients = recipe.getIngredients();
+
       for (int counter = 0; counter < ingredients.size(); counter++) {
         RecipeIngredient ri = ingredients.get(counter);
         Ingredient i = new Ingredient(ri.getName(), ri.getUnit(), ri.getPrice(), ri.checkIfDividable());
@@ -162,6 +181,9 @@ public class RecipeApp {
     mainMenu();
   }
 
+  /**
+   * Close app.
+   */
   private void closeApp() {
     ingredientHandler.writeToFile();
     recipeHandler.writeToFile();

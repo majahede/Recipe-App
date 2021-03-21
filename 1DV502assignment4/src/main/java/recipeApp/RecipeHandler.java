@@ -14,32 +14,46 @@ import java.util.Set;
 
 public class RecipeHandler {
   private SearchInterface strategy;
+  private TreeMap<String, Recipe> recipes = new TreeMap<String, Recipe>();
 
-  TreeMap<String, Recipe> recipes = new TreeMap<String, Recipe>();
+  /**
+   * Returns a TreeMap of recipes.
+   */
+  public TreeMap<String, Recipe> getRecipes() {
+    return recipes;
+  }
 
+  /**
+   * Sets a new search strategy.
+   */
   public void setStrategy(SearchInterface s) {
     strategy = s;
   }
 
+  /**
+   * Get search strategy.
+   */
   public SearchInterface getStrategy() {
     return strategy;
   }
 
+  /**
+   * Returns a list with recipes that match a search.
+   */
   public ArrayList<Recipe> search(String input) {
     return strategy.searchStrategy(input);
   }
 
-
-  /*
-  * Add recipe to recipe list.
-  */
+  /**
+   * Add recipe to recipe list.
+   */
   public void addRecipe(Recipe recipe) {
     recipes.put(recipe.getName(), recipe);
   }
 
-  /*
-  * List recipes.
-  */
+  /** 
+   * List recipes.
+   */
   public void list() {
     Set<String> keys = recipes.keySet();
     for(String key: keys){
@@ -47,22 +61,22 @@ public class RecipeHandler {
     }
   }
 
-   /*
-  * Get recipe.
-  */
+  /**
+   * Get recipe.
+   */
   public Recipe getRecipe(String recipe) {
     Recipe r = recipes.get(recipe);
     return r;
   }
 
-  /*
+ /**
   * Delete recipe.
   */
   public void delete(String name) {
     recipes.remove(name);
   }
 
-  /*
+ /**
   * Read recipefile.
   */
    public void readFromFile() {
@@ -83,16 +97,16 @@ public class RecipeHandler {
       o.close();
       f.close();
   
-  } catch (FileNotFoundException e) {
-      System.out.println("File not found");
-  } catch (IOException e) {
-      e.printStackTrace();
-  } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-  }
+    } catch (FileNotFoundException e) {
+        System.out.println("File not found");
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
   }
 
-  /*
+ /**
   * Write recipes to file.
   */
   public void writeToFile() {
@@ -100,7 +114,7 @@ public class RecipeHandler {
     try {
       FileOutputStream f = new FileOutputStream(new File("recipes1.txt"));
       ObjectOutputStream o = new ObjectOutputStream(f);
-      // Write objects to file
+      
       Set<Map.Entry<String, Recipe> > entries 
       = recipes.entrySet(); 
       for (Map.Entry<String, Recipe> entry : entries) { 

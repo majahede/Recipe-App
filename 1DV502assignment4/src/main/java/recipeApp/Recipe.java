@@ -12,7 +12,7 @@ public class Recipe implements Serializable {
   private String instructions;
   private double price;
 
-   /**
+  /**
    * Creates a new recipe.
    */
   public Recipe(String name, int portions, ArrayList<RecipeIngredient> ingredients, String instructions) {
@@ -24,47 +24,37 @@ public class Recipe implements Serializable {
   }
 
   /**
-   * Returns the name of the ingredient.
+   * Returns the name of the recipe.
    */
   public String getName() {
     return name;
   }
 
   /**
-   * Returns the name of the ingredient.
+   * Returns the price of the recipe.
    */
   public double getPrice() {
     return price;
   }
 
-  /**
-   * Returns the unit of the ingredient.
-   */
-  public int getPortions() {
-    return portions;
-  }
 
   /**
-   * Returns the unit of the ingredient.
+   * Set the amount of portions.
    */
   public void setPortions(int portions) {
     this.portions = portions;
   }
 
   /**
-   * Returns the unit of the ingredient.
+   * Returns a list of ingredients.
    */
   public ArrayList<RecipeIngredient> getIngredients() {
     return ingredients;
   }
 
   /**
-   * Returns the unit of the ingredient.
+   * Edits amounts of ingredients and price of recipe according to portions.
    */
-  public String getInstruction() {
-    return instructions;
-  }
-
   public void editPortions(int num) {
     int oldNum = this.portions;
     this.portions = num;
@@ -87,7 +77,7 @@ public class Recipe implements Serializable {
 
 
   /**
-   * Returns the price of the recipe.
+   * Calculates price for a recipe.
    */
  public  double setPrice() {
   double price = 0;

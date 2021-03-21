@@ -12,9 +12,11 @@ public class SearchByIngredient implements SearchInterface{
    */
   public SearchByIngredient(TreeMap <String, Recipe> recipes) {
     this.recipes = recipes;
-   
   }
 
+  /**
+   * Creates a new list with recipes that include a specified ingredient.
+   */
   public ArrayList<Recipe> searchStrategy(String input) {
     ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     for(Map.Entry<String,Recipe> entry : recipes.entrySet()) {
