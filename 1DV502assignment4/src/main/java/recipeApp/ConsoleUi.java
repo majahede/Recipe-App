@@ -20,6 +20,7 @@ public class ConsoleUi {
     LIST,
     ADD,
     DELETE,
+    EDIT,
     SEARCH,
     QUIT,
     VIEW,
@@ -110,6 +111,7 @@ public class ConsoleUi {
     System.out.println(recipe);
     System.out.println();
     System.out.println("Delete (D)");
+    System.out.println("Edit portions (E)");
     System.out.println("Back (B)");
     System.out.println("Save and exit (C)");
 
@@ -117,6 +119,15 @@ public class ConsoleUi {
     return option;
   }
 
+   /**
+   * Prints detail of an ingredient.
+   */
+  public int getNumOfPortions() {
+    System.out.println("Enter number of portions: ");
+    int portions = scan.nextInt();
+    scan.nextLine();
+    return portions;
+  }
 
 
   public Ingredient addIngredient() {
@@ -202,11 +213,12 @@ public class ConsoleUi {
 
     do {
       c = getInput(scan);
-    } while (!(c == 'L' || c == 'A' || c == 'D' || c == 'S' || c == 'C' || c == 'V'|| c == 'B'));
+    } while (!(c == 'L' || c == 'A' || c == 'D' || c == 'E' || c == 'S' || c == 'C' || c == 'V'|| c == 'B'));
       switch (c) {
         case 'L': return Option.LIST;
         case 'A': return Option.ADD;
         case 'D': return Option.DELETE;
+        case 'E': return Option.EDIT;
         case 'S': return Option.SEARCH;
         case 'C': return Option.QUIT;
         case 'V': return Option.VIEW;

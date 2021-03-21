@@ -31,8 +31,15 @@ public class Recipe implements Serializable {
   /**
    * Returns the unit of the ingredient.
    */
-  public int getportions() {
+  public int getPortions() {
     return portions;
+  }
+
+  /**
+   * Returns the unit of the ingredient.
+   */
+  public void setPortions(int portions) {
+    this.portions = portions;
   }
 
   /**
@@ -47,6 +54,18 @@ public class Recipe implements Serializable {
    */
   public String getInstruction() {
     return instructions;
+  }
+
+  public void editPortions(int num) {
+    int oldNum = this.portions;
+    this.portions = num;
+      for (int counter = 0; counter < this.ingredients.size(); counter++) {
+        RecipeIngredient ri = ingredients.get(counter);
+        int amount = ri.getAmount();
+        int one = amount / oldNum;
+        int newAmount = one * num;
+        ri.setAmount(newAmount);
+      }
   }
 
 

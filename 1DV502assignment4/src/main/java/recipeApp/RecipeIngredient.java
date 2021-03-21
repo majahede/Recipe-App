@@ -43,6 +43,13 @@ public class RecipeIngredient implements Serializable {
   }
 
    /**
+   * Returns the unit of the ingredient.
+   */
+  public void setAmount(int amount) {
+    this.amount = amount;
+  }
+
+   /**
    * Returns the comment of the ingredient.
    */
   public String getComment() {

@@ -69,12 +69,25 @@ public class RecipeApp {
       ConsoleUi.Option option = ui.viewRecipeDetails(recipe);
       switch (option) {
         case DELETE: deleteRecipe(r); break;
+        case EDIT: editPortions(recipe); break;
         case BACK: mainMenu(); break;
         case QUIT: closeApp(); break;
         default: break;
       }
     }
-   
+  }
+
+  private void editPortions(Recipe recipe) {
+    int portions = ui.getNumOfPortions();
+    recipe.editPortions(portions);
+      ConsoleUi.Option option = ui.viewRecipeDetails(recipe);
+      switch (option) {
+        case DELETE: deleteRecipe(recipe.getName()); break;
+        case EDIT: editPortions(recipe); break;
+        case BACK: mainMenu(); break;
+        case QUIT: closeApp(); break;
+        default: break;
+      }
   }
 
 
