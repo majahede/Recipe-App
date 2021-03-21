@@ -123,7 +123,7 @@ public class ConsoleUi {
    * Prints detail of an ingredient.
    */
   public int getNumOfPortions() {
-    System.out.println("Enter number of portions: ");
+    System.out.print("Enter number of portions: ");
     int portions = scan.nextInt();
     scan.nextLine();
     return portions;

@@ -10,6 +10,7 @@ public class Recipe implements Serializable {
   private int portions;
   private ArrayList<RecipeIngredient> ingredients;
   private String instructions;
+  private double price;
 
    /**
    * Creates a new recipe.
@@ -19,6 +20,7 @@ public class Recipe implements Serializable {
     this.portions = portions;
     this.ingredients = ingredients;
     this.instructions = instructions;
+    this.price = setPrice();
   }
 
   /**
@@ -73,19 +75,28 @@ public class Recipe implements Serializable {
           ri.setAmount(newAmount);
         }
       }
+      this.price = setPrice();
   }
 
 
   /**
    * Returns the price of the recipe.
    */
- /* public int getPrice() {
+ public  double setPrice() {
+  double price = 0;
+  for (int counter = 0; counter < this.ingredients.size(); counter++) {
+    RecipeIngredient ri = ingredients.get(counter);
+    double ingredientPrice = ri.getPrice();
+    double amount = ri.getAmount();
+    double total = ingredientPrice * amount;
+     price += total;
+    } 
     return price;
-  }*/
+  }
 
   @Override
   public String toString() {
-      return "Recipe: " + name + "\nPortions: " + portions + "\nIngredients: " + ingredients + "\nInstructions: " + instructions;
+      return "Recipe: " + name + "\nPortions: " + portions + "\nIngredients: " + ingredients + "\nInstructions: " + instructions + "\nPrice: " + price;
   } 
 
 }
