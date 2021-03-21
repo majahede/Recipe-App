@@ -1,6 +1,10 @@
 package main.java.recipeApp;
 
-public class RecipeIngredient {
+import java.io.Serializable;
+
+public class RecipeIngredient implements Serializable {
+
+  private static final long serialVersionUID = 1L;
   private String name;
   private String unit;
   private int amount;
@@ -54,7 +58,7 @@ public class RecipeIngredient {
 
   @Override
   public String toString() {
-      return "Ingredient: " + name + "\nUnit: " + unit + "\nAmount: " + amount + "\nComment: " + comment + "\nPrice: " + price;
+      return name + ","  + unit + "," + amount + "," + comment + "," + price + ";";
   } 
 
 }

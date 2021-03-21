@@ -69,7 +69,6 @@ public class RecipeApp {
   }
 
   private void list(String type) {
-
     if(type.equals("ingredient")) {
       ingredientHandler.listIngredients();
       ConsoleUi.Option option = ui.list();
