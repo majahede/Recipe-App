@@ -13,12 +13,18 @@ public class RecipeApp {
     recipeHandler = new RecipeHandler();
   }
 
+  /**
+   * Start the recipe app.
+   */
   private void startApp() {
     ingredientHandler.readFromFile();
     recipeHandler.readFromFile();
     mainMenu();
   }
 
+  /**
+   * Shows main menu.
+   */
   private void mainMenu() {
     char option = ui.mainMenu();
     switch (option) {
@@ -29,6 +35,9 @@ public class RecipeApp {
     }
   }
 
+  /**
+   * Shows recipe menu.
+   */
   private void recipeMenu() {
     ConsoleUi.Option option = ui.recipeMenu();
     switch (option) {
@@ -41,6 +50,9 @@ public class RecipeApp {
     }
   }
 
+  /**
+   * Shows ingredient menu.
+   */
   private void ingredientMenu() {
     ConsoleUi.Option option = ui.ingredientMenu();
     switch (option) {
@@ -52,6 +64,9 @@ public class RecipeApp {
     }
   }
 
+  /**
+   * Shows details of an ingrediant or a recipe.
+   */
   private void viewDetails(String type) {
     if(type.equals("ingredient")) {
       String i = ui.enterName("ingredient");
@@ -177,7 +192,6 @@ public class RecipeApp {
         ingredientHandler.addIngredient(i);
       }
     }
-    
     mainMenu();
   }
 

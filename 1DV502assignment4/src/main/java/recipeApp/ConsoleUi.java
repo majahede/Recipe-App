@@ -1,6 +1,7 @@
 package main.java.recipeApp;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleUi {
@@ -30,10 +31,10 @@ public class ConsoleUi {
    * Prints a main menu.
    */
   public char mainMenu() {
-    System.out.println("***Main Menu***\n\nManage recipes (R)\nManage ingredients (I)\nSave and exit (C)");
+    System.out.println("\n***Main Menu***\n\nManage recipes (R)\nManage ingredients (I)\nSave and exit (C)");
       char c;
     do {
-      c = getInput(scan);
+      c = getInput();
     } while(!(c == 'R' || c == 'I' || c == 'C'));
     
     return c;
@@ -43,7 +44,7 @@ public class ConsoleUi {
    * Prints a recipe menu.
    */
   public Option recipeMenu() {
-    System.out.println("***Recipes***\n\nList recipes (L)\nNew recipe (A)\nSearch recipe (S)\nBack (B)\nSave and exit (C)");
+    System.out.println("\n***Recipes***\n\nList recipes (L)\nNew recipe (A)\nSearch recipe (S)\nBack (B)\nSave and exit (C)");
    
     Option option = getOption();
     return option;
@@ -53,7 +54,7 @@ public class ConsoleUi {
    * Prints ingredient menu.
    */
   public Option ingredientMenu() {
-    System.out.println("***Ingredients***\nList ingredients (L)\nNew ingredient (A)\nBack (B)\nSave and exit (C)");
+    System.out.println("\n***Ingredients***\nList ingredients (L)\nNew ingredient (A)\nBack (B)\nSave and exit (C)");
    
     Option option = getOption();
     return option;
@@ -86,8 +87,7 @@ public class ConsoleUi {
     int type;
     do {
       System.out.print("Pick an option: ");
-      type = scan.nextInt();
-      scan.nextLine();
+      type = getInteger();
     } while(!(type == 1 || type == 2));
    
     return type;
@@ -121,8 +121,7 @@ public class ConsoleUi {
    */
   public int getNumOfPortions() {
     System.out.print("Enter number of portions: ");
-    int portions = scan.nextInt();
-    scan.nextLine();
+    int portions = getInteger();
     return portions;
   }
 
@@ -138,15 +137,19 @@ public class ConsoleUi {
     String unit = scan.nextLine();
 
     System.out.print("Price: ");
-    double price = scan.nextDouble();
-    scan.nextLine();
+    double price = getDouble();
 
     boolean isDividable = true;
-    System.out.print("Is ingredient dividable? (Y/N): ");
-    char c = scan.next().charAt(0);
-    scan.nextLine();
+    char c;
+
+    do {
+      System.out.print("Is ingredient dividable? (Y/N): ");
+      c = scan.next().charAt(0);
+      scan.nextLine();
+    } while (!(c == 'Y' || c == 'N'));
+   
     if (c == 'Y') {
-     isDividable = true;
+      isDividable = true;
     } else if(c == 'N') {
       isDividable = false;
     }
@@ -166,8 +169,7 @@ public class ConsoleUi {
     String name = scan.nextLine();
 
     System.out.print("Portions: ");
-    int portions = scan.nextInt();
-    scan.nextLine();
+    int portions = getInteger();
 
     do {
       System.out.print("New ingredient(Y/N): ");
@@ -200,15 +202,13 @@ public class ConsoleUi {
     String unit = scan.nextLine();
 
     System.out.print("Amount: ");
-    double amount = scan.nextDouble();
-    scan.nextLine();
+    double amount = getDouble();
     
     System.out.print("Comment: ");
     String comment = scan.nextLine();
  
     System.out.print("Price: ");
-    double price = scan.nextDouble();
-    scan.nextLine();
+    double price = getDouble();
 
     boolean isDividable = true;
 
@@ -241,7 +241,7 @@ public class ConsoleUi {
     char c;
 
     do {
-      c = getInput(scan);
+      c = getInput();
     } while (!(c == 'L' || c == 'A' || c == 'D' || c == 'E' || c == 'S' || c == 'C' || c == 'V'|| c == 'B'));
       switch (c) {
         case 'L': return Option.LIST;
@@ -260,7 +260,7 @@ public class ConsoleUi {
   /**
    * Get input from user.
    */
-  private char getInput(Scanner scan) {
+  private char getInput() {
     System.out.print("Pick an option: ");
    
     char option = scan.next().charAt(0);
@@ -269,4 +269,44 @@ public class ConsoleUi {
     scan.nextLine();
     return option;
   }
+
+  /**
+   * Get integer from user.
+   */
+  private int getInteger() {
+    boolean b = true;
+    int input = 0;
+    do {
+      try {
+        input = scan.nextInt();
+        scan.nextLine();
+        b = false;
+      } catch (InputMismatchException e)  {
+        System.out.print("Invalid input. Try again:");
+        scan.next();
+        }
+    } while (b);
+
+    return input;
+  } 
+  
+   /**
+   * Get floating number from user.
+   */
+  private double getDouble() {
+    boolean b = true;
+    double input = 0;
+    do {
+      try {
+        input = scan.nextDouble();
+        scan.nextLine();
+        b = false;
+      } catch (InputMismatchException e)  {
+        System.out.print("Invalid input. Try again:");
+        scan.next();
+        }
+    } while (b);
+
+    return input;
+  } 
 }
